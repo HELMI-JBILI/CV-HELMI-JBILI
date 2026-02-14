@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HELMI JBILI // CYBERPUNK CV</title>
+  <style>
+    /* ========== RESET & BASE ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Share Tech Mono', 'Courier New', monospace;
+    }
+
+    body {
+      background-color: #0a0c0f;
+      color: #b0f0f8;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    /* ========== CYBER GRID BACKGROUND ========== */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: 
+        linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: -50%; left: -10%;
+      width: 120%; height: 200%;
+      background: repeating-linear-gradient(45deg, 
+        transparent, 
+        transparent 20px, 
+        rgba(0, 255, 255, 0.01) 21px, 
+        transparent 22px, 
+        transparent 40px);
+      animation: shiftLines 40s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes shiftLines {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(40px, 40px) rotate(1deg); }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+    }
+
+    /* ========== TYPOGRAPHY & GLITCH ========== */
+    h1, h2, h3, .glitch {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    }
+
+    .glitch-name {
+      font-size: 3rem;
+      font-weight: 700;
+      position: relative;
+      animation: glitch 3s infinite;
+      color: #ffffff;
+      text-shadow: -2px 0 cyan, 2px 0 magenta;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: skew(0deg, 0deg); opacity: 1; text-shadow: -2px 0 cyan, 2px 0 magenta; }
+      95% { transform: skew(2deg, 0.5deg); text-shadow: -4px 0 magenta, 4px 0 cyan; }
+      96% { transform: skew(-2deg, -0.5deg); text-shadow: 2px 0 cyan, -2px 0 magenta; }
+      97% { transform: skew(0deg, 0deg); }
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      text-shadow: 0 0 10px #f0f, 0 0 20px #0ff;
+      animation: glitchTitle 2.5s infinite;
+    }
+
+    @keyframes glitchTitle {
+      2%, 64% { transform: skew(0deg, 0deg); }
+      4%, 60% { transform: skew(2deg, 0.8deg); text-shadow: -3px 0 magenta; }
+      6% { transform: skew(-2deg, -0.4deg); text-shadow: 3px 0 cyan; }
+    }
+
+    /* ========== HEADER ========== */
+    .fixed-header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 12, 15, 0.8);
+      border-bottom: 1px solid #00ffff88;
+      box-shadow: 0 0 20px #00ffff33;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+
+    .fixed-header h2 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #fff;
+    }
+
+    .fixed-header p {
+      color: #ff88ff;
+      text-shadow: 0 0 5px magenta;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      border: 2px solid #00ffff55;
+      box-shadow: 0 0 30px #ff00ff33, inset 0 0 10px #00ffff22;
+      background: rgba(0, 255, 255, 0.02);
+    }
+
+    .hero-img img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid #ff00ff;
+      box-shadow: 0 0 30px cyan, 0 0 10px magenta;
+      transition: 0.3s;
+      object-fit: cover;
+    }
+    .hero-img img:hover { transform: scale(1.02); filter: brightness(1.2); }
+
+    .hero-content h1 { font-size: 2.8rem; }
+    .hero-content p { font-size: 1.4rem; color: #f0f; min-height: 4rem; }
+
+    #typing {
+      border-right: 3px solid cyan;
+      padding-right: 5px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    /* ========== CARDS / SECTIONS ========== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .project-card, .cert-card, .skill-item, .lang-item, .trait-item {
+      background: rgba(0, 20, 30, 0.4);
+      backdrop-filter: blur(4px);
+      border: 1px solid #00ffff88;
+      padding: 1.5rem;
+      border-radius: 0px;
+      box-shadow: 0 0 15px #00ffff33, inset 0 0 10px #0f0f0f;
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover, .cert-card:hover {
+      transform: scale(1.02) translateY(-5px);
+      border-color: #ff44ff;
+      box-shadow: 0 0 35px #ff00ff, 0 0 15px cyan;
+    }
+
+    .skill-bar-container {
+      background: #11161f;
+      height: 16px;
+      border: 1px solid cyan;
+      margin: 8px 0 12px;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0ff, #f0f);
+      box-shadow: 0 0 20px cyan;
+      transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    }
+
+    .timeline {
+      border-left: 4px solid #f0f;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .timeline-item {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      width: 20px; height: 20px;
+      background: #0ff;
+      border: 3px solid #f0f;
+      position: absolute;
+      left: -2.8rem; top: 5px;
+      box-shadow: 0 0 30px cyan;
+      transition: 0.2s;
+    }
+    .timeline-item:hover::before { background: #f0f; box-shadow: 0 0 40px magenta; }
+
+    .traits-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .trait-item {
+      padding: 0.5rem 1.5rem;
+      font-weight: bold;
+      border-color: magenta;
+    }
+
+    .contact-links a {
+      color: #0ff;
+      text-decoration: none;
+      border: 1px solid magenta;
+      padding: 0.5rem 1.2rem;
+      margin-right: 1rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      transition: 0.2s;
+      box-shadow: 0 0 10px transparent;
+    }
+    .contact-links a:hover {
+      background: rgba(255, 0, 255, 0.2);
+      border-color: cyan;
+      box-shadow: 0 0 25px cyan, 0 0 10px magenta;
+      transform: translateY(-3px);
+    }
+
+    .glow-pointer {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      mix-blend-mode: difference;
+      transition: 0.05s;
+      box-shadow: 0 0 25px cyan, 0 0 60px magenta;
+    }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 800px) {
+      .hero { flex-direction: column; text-align: center; }
+      .fixed-header { flex-direction: column; gap: 0.3rem; }
+      .glitch-name { font-size: 2.2rem; }
+    }
+    @media (max-width: 500px) {
+      .wrapper { padding: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-pointer" id="glow"></div>
+
+  <header class="fixed-header">
+    <h2 class="glitch" id="header-name">LOADING...</h2>
+    <p id="header-title">...</p>
+  </header>
+
+  <main class="wrapper">
+
+    <!-- hero section -->
+    <section class="hero fade-in-section">
+      <div class="hero-img">
+        <img src="HELMI.jpeg" alt="HELMI JBILI" id="profile-pic">
+      </div>
+      <div class="hero-content">
+        <h1 class="glitch-name" id="hero-name">HELMI JBILI</h1>
+        <p><span id="hero-title">Computer Science Student and the first student in the family</span> // <span id="typing"></span></p>
+        <p style="color:#cfc; margin-top:1rem;" id="hero-tagline"></p>
+      </div>
+    </section>
+
+    <!-- about me -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> ABOUT_ME</h2>
+      <div class="project-card" id="about-text" style="font-size:1.2rem;">loading ...</div>
+    </section>
+
+    <!-- skills -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> SKILLS</h2>
+      <div class="card-grid" id="skills-container"></div>
+    </section>
+
+    <!-- projects -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> PROJECTS</h2>
+      <div class="card-grid" id="projects-container"></div>
+    </section>
+
+    <!-- experience & education -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> EXPERIENCE & EDUCATION</h2>
+      <div class="timeline" id="timeline-container"></div>
+    </section>
+
+    <!-- certifications -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> CERTIFICATIONS</h2>
+      <div class="card-grid" id="certs-container"></div>
+    </section>
+
+    <!-- languages -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> LANGUAGES</h2>
+      <div class="card-grid" id="languages-container"></div>
+    </section>
+
+    <!-- personal traits -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> PERSONAL TRAITS</h2>
+      <div class="traits-grid" id="traits-container"></div>
+    </section>
+
+    <!-- contact -->
+    <section class="fade-in-section" style="margin: 3rem 0;">
+      <h2 class="section-title">>> CONTACT</h2>
+      <div class="contact-links" id="contact-container"></div>
+    </section>
+
+    <div style="text-align:center; padding: 2rem; color: #636;">// HELMI JBILI // 2026 //</div>
+  </main>
+
+  <script>
+    (function() {
+      // ==================== YOUR PERSONAL DATA (easy to edit) ====================
+      const cvData = {
+        name: "HELMI JBILI",
+        title: "Computer Science Student and the first student in the family",
+        profilePic: "HELMI.jpeg", // replace with your photo
+        about: "Computer Science student in ISI KEF, passionate about AI technologies and data security. I strive to develop innovative digital solutions that help solve real-world problems. Believer in teamwork and continuous learning to achieve excellence  After my undergraduate degree I plan to pursue a research based Masters in the field of artificial intelligence and living systems. I prefer France as my destination.",
+
+       
+        tagline: "Aspiring to excellence, teamwork, innovation, and responsibility",
+        skills: [
+          { name: "JavaScript", level: 90 },
+          { name: "React", level: 88 },
+          { name: "Node.js", level: 82 },
+          { name: "PHP", level: 75 },
+          { name: "MongoDB", level: 78 },
+          { name: "Python", level: 78 },
+          { name: "AI / Computer Vision", level: 60 }
+          
+        ],
+        projects: [
+          { 
+            title: "Digital Platform for Emerging Entrepreneurs", 
+            desc: "Integrated platform to support and empower entrepreneurs and startups through innovative digital tools." 
+          },
+          { 
+            title: "Data Management & Encryption Platform", 
+            desc: "Advanced system for managing sensitive data with cutting-edge encryption technologies for information protection." 
+          },
+          { 
+            title: "AI Model for Satellite Imagery Analysis", 
+            desc: "Deep learning model development to analyze and process satellite images for pattern detection and change monitoring." 
+          }
+        ],
+        formation: [
+          { role: "formation", company: "BMC", year: "DEVOPS WORKSHOP", desc: "DESIGN THINKIKG." }
+        ],
+        education: [
+          { degree: "B.Sc. Computer Science", school: "BAC", year: "2022-2023", desc: "COMPUTER SCIENCE", deep:"DEEP LEARNING NVIDIA" }
+        ],
+        naw: [
+          { degree: "L. Computer Science", school: "ISI KEF", year: "2024-2027", desc: "COMPUTER SCIENCE SOFTWARE ENGINEERING" }
+        ],
+        certifications: [
+          "Baccalaureate in Computer Science",
+          "NVIDIA Deep Learning Fundamentals Certificate"
+        ],
+        languages: [
+          { lang: "Arabic", proficiency: "Native" },
+          { lang: "English", proficiency: "Professional Communication" },
+          { lang: "French", proficiency: "Advanced" }
+        ],
+        traits: ["Ambition", "Teamwork", "Leadership", "Curiosity", "Passion for knowledge"],
+        contact: {
+          email: "helmijbili4@gmail.com",
+          phone: "27359052",
+          linkedin: "https://www.linkedin.com/in/helmi-jbili-4912743a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+          github: "https://github.com/HELMI-JBILI"
+        }
+      };
+
+      // populate header / hero
+      document.getElementById('header-name').innerText = cvData.name;
+      document.getElementById('header-title').innerText = cvData.title;
+      document.getElementById('hero-name').innerText = cvData.name;
+      document.getElementById('hero-title').innerText = cvData.title;
+      document.getElementById('profile-pic').src = cvData.profilePic;
+      document.getElementById('about-text').innerText = cvData.about;
+      document.getElementById('hero-tagline').innerText = '> ' + cvData.tagline;
+
+      // typing animation
+      const taglineFull = cvData.tagline;
+      let i = 0;
+      const typingElement = document.getElementById('typing');
+      function typeNext() {
+        if (i < taglineFull.length) {
+          typingElement.innerHTML += taglineFull.charAt(i);
+          i++;
+          setTimeout(typeNext, 70);
+        }
+      }
+      typeNext();
+
+      // skills
+      const skillsHTML = cvData.skills.map(skill => `
+        <div class="skill-item">
+          <span style="color:#0ff;">⚡ ${skill.name}</span>
+          <div class="skill-bar-container">
+            <div class="skill-bar-fill" data-level="${skill.level}" style="width:0%"></div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('skills-container').innerHTML = skillsHTML;
+
+      // projects
+      const projectsHTML = cvData.projects.map(p => `
+        <div class="project-card">
+          <h3 style="color: #ff99ff;">// ${p.title}</h3>
+          <p>${p.desc}</p>
+          <span style="color: cyan">[view project]</span>
+        </div>
+      `).join('');
+      document.getElementById('projects-container').innerHTML = projectsHTML;
+
+      // timeline
+      const expItems = cvData.formation.map(e => `
+        <div class="timeline-item">
+          <strong style="color:#ff88ff;">${e.role}</strong> : ${e.company}, ${e.year}, ${e.deep}<br>
+          <span style="color:#aaffff;">${e.desc}</span>
+        </div>
+      `).join('');
+      const eduItems = cvData.education.map(e => `
+        <div class="timeline-item">
+          <strong style="color:#88ddff;">🎓 ${e.degree}</strong> - ${e.school} (${e.year})<br>
+          <span>${e.desc}</span>
+        </div>
+      `).join('');
+      document.getElementById('timeline-container').innerHTML = expItems + eduItems;
+      const nawItems = cvData.naw.map(e => `
+        <div class="timeline-item">
+          <strong style="color:#ff88ff;">${e.role}</strong> : ${e.company}, ${e.year}<br>
+          <span style="color:#aaffff;">${e.desc}</span>
+        </div>
+      `).join('');
+      // certs
+      const certsHTML = cvData.certifications.map(c => `
+        <div class="cert-card">🔖 ${c}</div>
+      `).join('');
+      document.getElementById('certs-container').innerHTML = certsHTML;
+
+      // languages
+      const langHTML = cvData.languages.map(l => `
+        <div class="lang-item"><span style="color:#0ff;">${l.lang}:</span> ${l.proficiency}</div>
+      `).join('');
+      document.getElementById('languages-container').innerHTML = langHTML;
+
+      // traits
+      const traitsHTML = cvData.traits.map(t => `<div class="trait-item">#${t}</div>`).join('');
+      document.getElementById('traits-container').innerHTML = traitsHTML;
+
+      // contact
+      const c = cvData.contact;
+      document.getElementById('contact-container').innerHTML = `
+        <a href="mailto:${c.email}">📧 ${c.email}</a>
+        <a href="tel:${c.phone}">📞 ${c.phone}</a>
+        <a href="${c.linkedin}" target="_blank">🔗 LinkedIn</a>
+        <a href="${c.github}" target="_blank">🐙 GitHub</a>
+      `;
+
+      // scroll animations
+      const faders = document.querySelectorAll('.fade-in-section');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+      faders.forEach(f => observer.observe(f));
+
+      // skill bars animation
+      const skillBars = document.querySelectorAll('.skill-bar-fill');
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const level = bar.getAttribute('data-level');
+            bar.style.width = level + '%';
+          }
+        });
+      }, { threshold: 0.4 });
+      skillBars.forEach(b => barObserver.observe(b));
+
+      // mouse glow
+      const glow = document.getElementById('glow');
+      document.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX - 6 + 'px';
+        glow.style.top = e.clientY - 6 + 'px';
+      });
+
+      // counter
+      const counterSpan = document.createElement('span');
+      counterSpan.style.float = 'right';
+      counterSpan.style.color = '#f0f';
+      counterSpan.innerText = `// projects: ${cvData.projects.length} // CS Student`;
+      document.querySelector('.fixed-header').appendChild(counterSpan);
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</body>
+</html>
