@@ -398,9 +398,6 @@
         education: [
           { degree: "B.Sc. Computer Science", school: "BAC", year: "2022-2023", desc: "COMPUTER SCIENCE", deep:"DEEP LEARNING NVIDIA" }
         ],
-        naw: [
-          { degree: "L. Computer Science", school: "ISI KEF", year: "2024-2027", desc: "COMPUTER SCIENCE SOFTWARE ENGINEERING" }
-        ],
         certifications: [
           "Baccalaureate in Computer Science",
           "NVIDIA Deep Learning Fundamentals Certificate"
@@ -476,12 +473,7 @@
         </div>
       `).join('');
       document.getElementById('timeline-container').innerHTML = expItems + eduItems;
-      const nawItems = cvData.naw.map(e => `
-        <div class="timeline-item">
-          <strong style="color:#ff88ff;">${e.role}</strong> : ${e.company}, ${e.year}<br>
-          <span style="color:#aaffff;">${e.desc}</span>
-        </div>
-      `).join('');
+     
       // certs
       const certsHTML = cvData.certifications.map(c => `
         <div class="cert-card">🔖 ${c}</div>
@@ -548,3 +540,4 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </body>
 </html>
+
