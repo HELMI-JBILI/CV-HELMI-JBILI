@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HELMI JBILI // CYBERPUNK CV</title>
+  <title>HELMI JBILI // CS Student // Cyberpunk CV</title>
   <style>
     /* ========== RESET & BASE ========== */
     * {
@@ -144,8 +144,8 @@
     }
 
     .hero-img img {
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       border: 3px solid #ff00ff;
       box-shadow: 0 0 30px cyan, 0 0 10px magenta;
@@ -172,7 +172,7 @@
       margin: 1.5rem 0;
     }
 
-    .project-card, .cert-card, .skill-item, .lang-item, .trait-item {
+    .project-card, .cert-card, .skill-item, .lang-item, .trait-item, .hobby-item {
       background: rgba(0, 20, 30, 0.4);
       backdrop-filter: blur(4px);
       border: 1px solid #00ffff88;
@@ -182,7 +182,7 @@
       transition: 0.25s ease;
     }
 
-    .project-card:hover, .cert-card:hover {
+    .project-card:hover, .cert-card:hover, .hobby-item:hover {
       transform: scale(1.02) translateY(-5px);
       border-color: #ff44ff;
       box-shadow: 0 0 35px #ff00ff, 0 0 15px cyan;
@@ -232,6 +232,23 @@
       padding: 0.5rem 1.5rem;
       font-weight: bold;
       border-color: magenta;
+    }
+
+    .hobbies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .hobby-item {
+      padding: 0.8rem 1.8rem;
+      font-weight: bold;
+      border-color: #ff88ff;
+      background: rgba(255, 0, 255, 0.05);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .contact-links a {
@@ -297,11 +314,13 @@
     <!-- hero section -->
     <section class="hero fade-in-section">
       <div class="hero-img">
-        <img src="https://via.placeholder.com/160" alt="HELMI JBILI" id="profile-pic">
+        <!-- GitHub Pages fix: use raw image or placeholder -->
+        <img src="img.jpeg" alt="HELMI JBILI" id="profile-pic">
+        <p style="color: #ff88ff; font-size: 0.8rem; margin-top: 0.5rem;"></p>
       </div>
       <div class="hero-content">
         <h1 class="glitch-name" id="hero-name">HELMI JBILI</h1>
-        <p><span id="hero-title">Computer Science Student and the first student in the family</span> // <span id="typing"></span></p>
+        <p><span id="hero-title">Software Engineering Student @ ISIK</span> // <span id="typing"></span></p>
         <p style="color:#cfc; margin-top:1rem;" id="hero-tagline"></p>
       </div>
     </section>
@@ -309,7 +328,7 @@
     <!-- about me -->
     <section class="fade-in-section">
       <h2 class="section-title">>> ABOUT_ME</h2>
-      <div class="project-card" id="about-text" style="font-size:1.2rem;">loading ...</div>
+      <div class="project-card" id="about-text" style="font-size:1.2rem; line-height: 1.8;">loading ...</div>
     </section>
 
     <!-- skills -->
@@ -326,7 +345,7 @@
 
     <!-- experience & education -->
     <section class="fade-in-section">
-      <h2 class="section-title">>> EXPERIENCE & EDUCATION</h2>
+      <h2 class="section-title">>> JOURNEY</h2>
       <div class="timeline" id="timeline-container"></div>
     </section>
 
@@ -344,8 +363,14 @@
 
     <!-- personal traits -->
     <section class="fade-in-section">
-      <h2 class="section-title">>> PERSONAL TRAITS</h2>
+      <h2 class="section-title">>> STRENGTHS</h2>
       <div class="traits-grid" id="traits-container"></div>
+    </section>
+
+    <!-- hobbies -->
+    <section class="fade-in-section">
+      <h2 class="section-title">>> HOBBIES & INTERESTS</h2>
+      <div class="hobbies-grid" id="hobbies-container"></div>
     </section>
 
     <!-- contact -->
@@ -354,7 +379,7 @@
       <div class="contact-links" id="contact-container"></div>
     </section>
 
-    <div style="text-align:center; padding: 2rem; color: #636;">// HELMI JBILI // 2026 //</div>
+    <div style="text-align:center; padding: 2rem; color: #636;">// HELMI JBILI // First Graduate // ISIK // 2026 //</div>
   </main>
 
   <script>
@@ -362,21 +387,19 @@
       // ==================== YOUR PERSONAL DATA (easy to edit) ====================
       const cvData = {
         name: "HELMI JBILI",
-        title: "Computer Science Student and the first student in the family",
-        profilePic: "HELMI.jpeg", // replace with your photo
-        about: "Computer Science student in ISI KEF, passionate about AI technologies and data security. I strive to develop innovative digital solutions that help solve real-world problems. Believer in teamwork and continuous learning to achieve excellence  After my undergraduate degree I plan to pursue a research based Masters in the field of artificial intelligence and living systems. I prefer France as my destination.",
-
-       
-        tagline: "Aspiring to excellence, teamwork, innovation, and responsibility",
+        title: " Computer Science Student @ ISI KEF",
+        profilePic: "img.jpeg", 
+        about: "First university graduate in my family, currently an software engineering student at the Higher Institute of Computer Science of Kef (ISIK). Passionate about AI and always keeping up with the latest in the field. I believe that passion and ambition are the foundation of everything. Currently working on a research project in deep learning for space engineering, aspiring to pursue a research master's in AI at one of the most prestigious universities.",
+        tagline: "First graduate • AI enthusiast • Research aspirant",
         skills: [
           { name: "JavaScript", level: 90 },
           { name: "React", level: 88 },
           { name: "Node.js", level: 82 },
           { name: "PHP", level: 75 },
-          { name: "MongoDB", level: 78 },
-          { name: "Python", level: 78 },
-          { name: "AI / Computer Vision", level: 60 }
-          
+          { name: "MongoDB", level: 80 },
+          { name: "Python", level: 92 },
+          { name: "Project Management", level: 85 },
+          { name: "Design Thinking", level: 80 }
         ],
         projects: [
           { 
@@ -388,15 +411,15 @@
             desc: "Advanced system for managing sensitive data with cutting-edge encryption technologies for information protection." 
           },
           { 
-            title: "AI Model for Satellite Imagery Analysis", 
-            desc: "Deep learning model development to analyze and process satellite images for pattern detection and change monitoring." 
+            title: "Deep Learning for Space Engineering", 
+            desc: "Research project applying deep learning techniques to satellite imagery analysis for aerospace applications." 
           }
         ],
-        formation: [
-          { role: "formation", company: "BMC", year: "DEVOPS WORKSHOP", desc: "DESIGN THINKIKG." }
+        experience: [
+          { role: "Student Project", company: "ISIK", year: "2024-Present", desc: "Working on deep learning applications for space engineering and satellite imagery." }
         ],
         education: [
-          { degree: "B.Sc. Computer Science", school: "BAC", year: "2022-2023", desc: "COMPUTER SCIENCE", deep:"DEEP LEARNING NVIDIA" }
+          { degree: "Student in Computer Science", school: "ISIK - Higher Institute of Computer Science of Kef", year: "2024-2027", desc: "Software engineering and Information Systems. First university graduate in my family." }
         ],
         certifications: [
           "Baccalaureate in Computer Science",
@@ -407,7 +430,21 @@
           { lang: "English", proficiency: "Professional Communication" },
           { lang: "French", proficiency: "Advanced" }
         ],
-        traits: ["Ambition", "Teamwork", "Leadership", "Curiosity", "Passion for knowledge"],
+        traits: [
+          "Project Management", 
+          "Design Thinking", 
+          "Innovation", 
+          "Leadership", 
+          "Adventure Seeking",
+          "Ambition",
+          "Curiosity"
+        ],
+        hobbies: [
+          "✍️ Writing",
+          "📚 Reading Books",
+          "🎵 Classical Music",
+          "🤝 Professional Integration"
+        ],
         contact: {
           email: "helmijbili4@gmail.com",
           phone: "27359052",
@@ -454,26 +491,27 @@
         <div class="project-card">
           <h3 style="color: #ff99ff;">// ${p.title}</h3>
           <p>${p.desc}</p>
-          <span style="color: cyan">[view project]</span>
+          <span style="color: cyan">[in progress]</span>
         </div>
       `).join('');
       document.getElementById('projects-container').innerHTML = projectsHTML;
 
       // timeline
-      const expItems = cvData.formation.map(e => `
+      const expItems = cvData.experience.map(e => `
         <div class="timeline-item">
-          <strong style="color:#ff88ff;">${e.role}</strong> : ${e.company}, ${e.year}, ${e.deep}<br>
+          <strong style="color:#ff88ff;">${e.role}</strong> @ ${e.company} (${e.year})<br>
           <span style="color:#aaffff;">${e.desc}</span>
         </div>
       `).join('');
       const eduItems = cvData.education.map(e => `
         <div class="timeline-item">
-          <strong style="color:#88ddff;">🎓 ${e.degree}</strong> - ${e.school} (${e.year})<br>
-          <span>${e.desc}</span>
+          <strong style="color:#88ddff;">🎓 ${e.degree}</strong><br>
+          <span>${e.school} (${e.year})</span><br>
+          <span style="color:#aaffff;">${e.desc}</span>
         </div>
       `).join('');
       document.getElementById('timeline-container').innerHTML = expItems + eduItems;
-     
+
       // certs
       const certsHTML = cvData.certifications.map(c => `
         <div class="cert-card">🔖 ${c}</div>
@@ -489,6 +527,12 @@
       // traits
       const traitsHTML = cvData.traits.map(t => `<div class="trait-item">#${t}</div>`).join('');
       document.getElementById('traits-container').innerHTML = traitsHTML;
+
+      // hobbies
+      const hobbiesHTML = cvData.hobbies.map(h => `
+        <div class="hobby-item">${h}</div>
+      `).join('');
+      document.getElementById('hobbies-container').innerHTML = hobbiesHTML;
 
       // contact
       const c = cvData.contact;
@@ -532,7 +576,7 @@
       const counterSpan = document.createElement('span');
       counterSpan.style.float = 'right';
       counterSpan.style.color = '#f0f';
-      counterSpan.innerText = `// projects: ${cvData.projects.length} // CS Student`;
+      counterSpan.innerText = `// first graduate // projects: ${cvData.projects.length} // ISIK`;
       document.querySelector('.fixed-header').appendChild(counterSpan);
     })();
   </script>
@@ -540,6 +584,3 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </body>
 </html>
-
-
-
