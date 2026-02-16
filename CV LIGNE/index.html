@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HELMI JBILI // CS Student // Cyberpunk CV</title>
   <style>
-    /* ========== RESET & BASE ========== */
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +21,7 @@
       scroll-behavior: smooth;
     }
 
-    /* ========== CYBER GRID BACKGROUND ========== */
+    
     body::before {
       content: "";
       position: fixed;
@@ -64,7 +63,7 @@
       padding: 1.5rem 2rem;
     }
 
-    /* ========== TYPOGRAPHY & GLITCH ========== */
+   
     h1, h2, h3, .glitch {
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -103,7 +102,7 @@
       6% { transform: skew(-2deg, -0.4deg); text-shadow: 3px 0 cyan; }
     }
 
-    /* ========== HEADER ========== */
+ /
     .fixed-header {
       position: sticky;
       top: 0;
@@ -130,7 +129,7 @@
       text-shadow: 0 0 5px magenta;
     }
 
-    /* ========== HERO ========== */
+   
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -164,7 +163,7 @@
     }
     @keyframes blink { 50% { border-color: transparent; } }
 
-    /* ========== CARDS / SECTIONS ========== */
+    
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -311,10 +310,10 @@
 
   <main class="wrapper">
 
-    <!-- hero section -->
+    
     <section class="hero fade-in-section">
       <div class="hero-img">
-        <!-- GitHub Pages fix: use raw image or placeholder -->
+       
         <img src="img.jpeg" alt="HELMI JBILI" id="profile-pic">
         <p style="color: #ff88ff; font-size: 0.8rem; margin-top: 0.5rem;"></p>
       </div>
@@ -325,55 +324,54 @@
       </div>
     </section>
 
-    <!-- about me -->
+  
     <section class="fade-in-section">
       <h2 class="section-title">>> ABOUT_ME</h2>
       <div class="project-card" id="about-text" style="font-size:1.2rem; line-height: 1.8;">loading ...</div>
     </section>
 
-    <!-- skills -->
+    
     <section class="fade-in-section">
       <h2 class="section-title">>> SKILLS</h2>
       <div class="card-grid" id="skills-container"></div>
     </section>
 
-    <!-- projects -->
+    
     <section class="fade-in-section">
       <h2 class="section-title">>> PROJECTS</h2>
       <div class="card-grid" id="projects-container"></div>
     </section>
 
-    <!-- experience & education -->
+  
     <section class="fade-in-section">
       <h2 class="section-title">>> JOURNEY</h2>
       <div class="timeline" id="timeline-container"></div>
     </section>
 
-    <!-- certifications -->
     <section class="fade-in-section">
       <h2 class="section-title">>> CERTIFICATIONS</h2>
       <div class="card-grid" id="certs-container"></div>
     </section>
 
-    <!-- languages -->
+    
     <section class="fade-in-section">
       <h2 class="section-title">>> LANGUAGES</h2>
       <div class="card-grid" id="languages-container"></div>
     </section>
 
-    <!-- personal traits -->
+    
     <section class="fade-in-section">
       <h2 class="section-title">>> STRENGTHS</h2>
       <div class="traits-grid" id="traits-container"></div>
     </section>
 
-    <!-- hobbies -->
+    
     <section class="fade-in-section">
       <h2 class="section-title">>> HOBBIES & INTERESTS</h2>
       <div class="hobbies-grid" id="hobbies-container"></div>
     </section>
 
-    <!-- contact -->
+    
     <section class="fade-in-section" style="margin: 3rem 0;">
       <h2 class="section-title">>> CONTACT</h2>
       <div class="contact-links" id="contact-container"></div>
@@ -384,7 +382,7 @@
 
   <script>
     (function() {
-      // ==================== YOUR PERSONAL DATA (easy to edit) ====================
+      
       const cvData = {
         name: "HELMI JBILI",
         title: " Computer Science Student @ ISI KEF",
@@ -393,13 +391,14 @@
         tagline: "First graduate • AI enthusiast • Research aspirant",
         skills: [
           { name: "JavaScript", level: 90 },
-          { name: "React", level: 88 },
-          { name: "Node.js", level: 82 },
+          { name: "React", level: 70 },
+          { name: "Node.js", level: 52 },
           { name: "PHP", level: 75 },
-          { name: "MongoDB", level: 80 },
-          { name: "Python", level: 92 },
+          { name: "MongoDB", level: 65 },
+          { name: "Python", level: 70 },
           { name: "Project Management", level: 85 },
-          { name: "Design Thinking", level: 80 }
+          { name: "Design Thinking", level: 80 },
+           { name: "JAVA", level: 50 } 
         ],
         projects: [
           { 
@@ -453,7 +452,7 @@
         }
       };
 
-      // populate header / hero
+      
       document.getElementById('header-name').innerText = cvData.name;
       document.getElementById('header-title').innerText = cvData.title;
       document.getElementById('hero-name').innerText = cvData.name;
@@ -462,7 +461,7 @@
       document.getElementById('about-text').innerText = cvData.about;
       document.getElementById('hero-tagline').innerText = '> ' + cvData.tagline;
 
-      // typing animation
+    
       const taglineFull = cvData.tagline;
       let i = 0;
       const typingElement = document.getElementById('typing');
@@ -475,7 +474,7 @@
       }
       typeNext();
 
-      // skills
+    
       const skillsHTML = cvData.skills.map(skill => `
         <div class="skill-item">
           <span style="color:#0ff;">⚡ ${skill.name}</span>
@@ -486,7 +485,7 @@
       `).join('');
       document.getElementById('skills-container').innerHTML = skillsHTML;
 
-      // projects
+      
       const projectsHTML = cvData.projects.map(p => `
         <div class="project-card">
           <h3 style="color: #ff99ff;">// ${p.title}</h3>
@@ -496,7 +495,7 @@
       `).join('');
       document.getElementById('projects-container').innerHTML = projectsHTML;
 
-      // timeline
+      
       const expItems = cvData.experience.map(e => `
         <div class="timeline-item">
           <strong style="color:#ff88ff;">${e.role}</strong> @ ${e.company} (${e.year})<br>
@@ -512,29 +511,29 @@
       `).join('');
       document.getElementById('timeline-container').innerHTML = expItems + eduItems;
 
-      // certs
+    
       const certsHTML = cvData.certifications.map(c => `
         <div class="cert-card">🔖 ${c}</div>
       `).join('');
       document.getElementById('certs-container').innerHTML = certsHTML;
 
-      // languages
+      
       const langHTML = cvData.languages.map(l => `
         <div class="lang-item"><span style="color:#0ff;">${l.lang}:</span> ${l.proficiency}</div>
       `).join('');
       document.getElementById('languages-container').innerHTML = langHTML;
 
-      // traits
+      
       const traitsHTML = cvData.traits.map(t => `<div class="trait-item">#${t}</div>`).join('');
       document.getElementById('traits-container').innerHTML = traitsHTML;
 
-      // hobbies
+      
       const hobbiesHTML = cvData.hobbies.map(h => `
         <div class="hobby-item">${h}</div>
       `).join('');
       document.getElementById('hobbies-container').innerHTML = hobbiesHTML;
 
-      // contact
+      
       const c = cvData.contact;
       document.getElementById('contact-container').innerHTML = `
         <a href="mailto:${c.email}">📧 ${c.email}</a>
@@ -543,7 +542,7 @@
         <a href="${c.github}" target="_blank">🐙 GitHub</a>
       `;
 
-      // scroll animations
+    
       const faders = document.querySelectorAll('.fade-in-section');
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -552,7 +551,7 @@
       }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
       faders.forEach(f => observer.observe(f));
 
-      // skill bars animation
+     
       const skillBars = document.querySelectorAll('.skill-bar-fill');
       const barObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -565,14 +564,14 @@
       }, { threshold: 0.4 });
       skillBars.forEach(b => barObserver.observe(b));
 
-      // mouse glow
+     
       const glow = document.getElementById('glow');
       document.addEventListener('mousemove', (e) => {
         glow.style.left = e.clientX - 6 + 'px';
         glow.style.top = e.clientY - 6 + 'px';
       });
 
-      // counter
+     
       const counterSpan = document.createElement('span');
       counterSpan.style.float = 'right';
       counterSpan.style.color = '#f0f';
@@ -584,5 +583,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </body>
 </html>
+
 
 
